@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Programming 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="banner">
+    <h1 class="banner-head">
+    </h1>
+    </div> 
+
+
+
+
+
+
+    <div id="d1">
+
+<center>
+      <form id="emailListForm">
+        <fieldset>
+          <legend>Register</legend>
+          <label for="firstName">First name: </label>
+          <input id="nimabi" type="text" placeholder="first name" name="firstName" autofocus="autofocus"/><br/><br/>
+
+          <label for="lastName">Last name: </label>
+          <input id="nimabi" type="text" placeholder="last name" name="lastName"/><br/><br/>
+
+          <label for="lastName">Email: </label>
+          <input id="nimabi" type="text" placeholder="email" name="email"/><br/><br/>
+
+          <input id="submit" type="button" value="Submit"/>
+          <input type="reset" value="Reset"/>
+
+        </fieldset>
+      </form>
+      <br/>
+
+      <p id="p1"></p>
+    </div>
+
+    <!-- <div class="contact">
+      <br/><br/><br/>
+      <form action="./blah">
+        <fieldset>
+          <legend>Request A Quote</legend>
+          <label for="Title">Name: </label>
+          <input id="Title" type="text" placeholder="Name" autofocus="autofocus" maxlength="20" required="true" pattern="[a-z,A-Z]{1,20}" oninput=" checkTitle(this);"/><br/><br/>
+
+          <label for="email">Email: </label>
+          <input id="email" type="email" placeholder="email" autofocus="autofocus"
+            required="true" oninput="checkEmail(this);" ><br/><br/>
+
+          <label for="number">Phone Number: </label>
+          <input id="number" type="phone number" placeholder="number"
+            required="true" pattern= "[0-9]{10,11}" oninput="checkNumber(this);"/><br/><br/>
+
+          <label for="date">Birthday: </label>
+          <input id="date" type="date" placeholder="date development" min="1901-01-01"
+            max="2100-09-30" value=""required="true"/><br/><br/>
+
+          <input type="reset" value="Reset"/>
+          <input id="submit" type="submit" value="Submit" disabled="true"/>
+
+          
+
+        </fieldset>
+      </form>
+      <br/>
+      <p id="formMsg"></p>
+    </div> -->
+<!-- jquery fun game -->
+
+<div class="miniGame" style="width:100%">
+<h4 id="minigame">Mini game</h4>
+<div class="out enterleave">
+  <p>move your mouse</p>
+  <div class="in enterleave"><p>move your mouse</p><p>0</p></div>
+  <p>0</p>
+</div>
+</div>
+<br>
+
+<!-- game ends -->
+
+
+<div>
+    <center>
+    <form id="form-container" class="form-container">
+        <label for="street">Street: </label><input type="text" id="street" value="">
+        <label for="city">City: </label><input type="text" id="city" value="">
+        <button id="submit-btn">Submit</button>
+    </form>
+</center>
+<button id="NMB">search menu</button>
+    <hr>
+
+    <h2 id="greeting" class="greeting">Search for the place you want to live in</h2>
+
+    <div class="nytimes-container">
+        <h3 id="nytimes-header">New York Times Articles</h3>
+        <ul id="nytimes-articles" class="article-list">What's going on in your new city? Enter an address and hit submit and the NY Times will tell you here!</div>
+    </div>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
