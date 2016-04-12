@@ -46,7 +46,7 @@ $.getJSON(nytimesURL, function (data){
 });
 
 //wiki api
-var wikiUrl = "http://en.wikipdsadsaedia.org/w/api.php?action=opensearch&search="+cityStr+"&format=json&callback=wikiCallback";
+var wikiUrl = "http://en.wikipedia.org/w/api.php?action=opensearch&search="+cityStr+"&format=json&callback=wikiCallback";
 
 
 //Error Handling with JSON P 
