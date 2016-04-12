@@ -7,116 +7,73 @@ function loadData() {
     var $nytElem = $('#nytimes-articles');
     var $greeting = $('#greeting');
 
-
+    // clear out old data before new request
     $wikiElem.text("");
     $nytElem.text("");
 
+    // load streetview
+
+    // YOUR CODE GOES HERE!
+
     var streetStr = $('#street').val();
     var cityStr = $('#city').val();
-    var address = streetStr + ',' +cityStr;
+    var address = streetStr+','+cityStr;
 
-    $greeting.text('So, you want to live at ' + address + '?');
+    $greeting.text('you want to see'+address+'?');
 
-    var streetviewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address + '';
+
+    var streetviewUrl = 'http://maps.googleapis.com/maps/api/streetview?size=600x400&location='+address+'';
+
 
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
 
 
-    //NYT AJAX request 
-    var nytimesUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' +cityStr + '&sort=newest&api-key=c346f4c7b9599929d2dbdb2448f05e90:10:73016388'
-    $.getJSON (nytimesUrl, function(data) {
+    //NYTimes AJAX request 
+    //NYT api
+var nytimesURL = 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q='+cityStr+'=2&sort=newest&api-key=c346f4c7b9599929d2dbdb2448f05e90:10:73016388';
 
-        $nytHeaderElem.text('New York Times Articles About '+ cityStr);
+$.getJSON(nytimesURL, function (data){
+    $nytHeaderElem.text('New York Times' +cityStr);
 
-        articles = data.response.docs;
-        for (var i = 0; i < articles.length; i++) {
-            var article =articles[i];
-            $nytElem.append('<li class="article">' + 
-                '<a href="'+article.web_url+'">'+article.headline.main+
-                '</a>'+
-                '<p>' + article.snippet + '</p>' +
-                '</li>')
-        };
+    articles = data.response.docs;
+    for (var i =0; i< articles.length; i++){
+        var article = articles[i];
+        $nytElem.append('<li class = "article"><a href="'+article.web_url+'">'+article.headline.main+'</a><p>'+article.snippet+'</p></li>');
+    };
 
-    }).error(function(e){
-        $nytHeaderElem.text('New York Times Articles Could Not Be Loaded');
+}).fail(function(){
+    $nytHeaderElem.text('NYT can not be loaded!');
+});
 
+//wiki api
+var wikiUrl = "http://en.wikipdsadsaedia.org/w/api.php?action=opensearch&search="+cityStr+"&format=json&callback=wikiCallback";
+
+
+//Error Handling with JSON P 
+var wikiRequestTimeout = setTimeout(function(){
+    $wikiElem.text("failed to get wikipedia resources");
+}, 5000);
+
+    $.ajax({
+        url: wikiUrl,
+        dataType: "jsonp",
+        jsonp: "callback",
+        success: function( response ) {
+            var articleList = response[1];
+
+            for (var i = 0; i < articleList.length; i++) {
+                articleStr = articleList[i];
+                var url = 'http://en.wikipedia.org/wiki/' + articleStr;
+                $wikiElem.append('<li><a href="' + url + '">' + articleStr + '</a></li>');
+            };
+
+            clearTimeout(wikiRequestTimeout);
+        }
     });
 
-
-        return false;
+    return false;
 };
 
 $('#form-container').submit(loadData);
 
-    
-    //real post 
-   
-$(document).ready(function() {
 
-            $("#submit").click(function() {
-                //console.log($("#lastName").val());
-                var formData = ConvertFormToJSON("#emailListForm");
-                console.log("Data from form (to be sent): ", formData);
-
-                $.ajax({
-                    url: "ajax-post.php",
-                    type: "POST",
-                    dataType: "JSON",
-                    data: formData,
-                    success: function(data) {
-                        console.log("Data returned from server: ", data);
-                        var listData = "";
-                       /*for(var key in data) {
-                            listData += key + ":" + data[key] + " ";
-                        }*/
-                        $("#p1").text(data['firstName'] + [' '] + data['lastName']+[' '] + data['email']);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        $("#p1").text(jqXHR.statusText);
-                    }
-                });
-
-                // from: http://www.developerdrive.com/2013/04/turning-a-form-element-into-json-and-submiting-it-via-jquery/
-                function ConvertFormToJSON(form){
-                    var array = $(form).serializeArray();
-                    var json = {};
-
-                    /*
-                        Read the following as:
-                          For every object in the array, use it's name and value
-                          to add a new property to the JavaScript object that is
-                          assigned to the variable 'json'. If the value of the
-                          input/textArea/select is undefined, use an empty string
-                          as the value.
-                     */
-                    jQuery.each(array, function() {
-                        json[this.name] = this.value || '';
-                    });
-                    return json;
-                }
-
-            });
-
-        });
-
-
-
-
-
- $( "#NMB" ).click(function() {
-  $( "#form-container" ).fadeToggle( "slow", "linear" );
-});
- 
- // mini-game
- 
- 
-var n = 0;
-$( "div.enterleave" )
-  .mouseenter(function() {
-    $( "p:first", this ).text( "Game Start!" );
-    $( "p:last", this ).text( ++n );
-  })
-  .mouseleave(function() {
-    $( "p:first", this ).text( "Game Over!" );
-  });

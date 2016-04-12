@@ -1,12 +1,9 @@
 * {box-sizing:border-box;}
-body {background-color: #CCC;
-text-align: center;}
-
-
+body {background-color: #CCC;}
 
 .bgimg {
     position:fixed;
-    top: 600px;
+    top: 0;
     left: 0;
     width:100%;
     z-index:-1;
@@ -19,13 +16,18 @@ text-align: center;}
     text-align: center;
 }
 
+.wikipedia-container {
+    float:right;
+    width:290px;
+    padding:10px;
+    margin-right: 10px;
+    background-color: rgba(255,255,255,0.7);
+}
 
 .nytimes-container {
     padding: 10px;
     margin-right:300px;
-    background-color: rgba(255,255,255,0.4);
-    margin: 0 auto;
-    text-align: center;
+    background-color: rgba(255,255,255,0.7);
 }
 
 .article-list {
@@ -41,104 +43,3 @@ text-align: center;}
 .article:first-child {
     border-top:none;
 }
-
-.banner {
-    background: transparent url('../img/banner.jpg') 0 0;
-    text-align: center;
-    background-size: cover;
-    height: 300px; /*show the photo selection*/
-    width: 100%; 
-    margin-bottom: 3em;
-    display: table;
-
-   } 
-
-    /*form*/
-
-    .contact {
-        margin: 0 auto;
-        width: 50%;
-        height: 50%;
-    }
-
-#Title {
-        border: solid 1px;
-        padding: 5px;
-        float: right;
-      }
-
-#email{
-        border: solid 1px;
-        padding: 5px;
-        float: right;
-      }
-#number {
-        border: solid 1px;
-        padding: 5px;
-        float: right;
-      }
-#date {
-        border: solid 1px;
-        padding: 5px;
-        float: right;
-      }
-
-#minigame {
-       
-        text-align: left;
-        margin-left: 18%;
-
-      }
-
-   /*   form {
-        border:solid 3px #yellow;
-        width: 400px;
-        margin: 0 auto;
-        background-color: #f0f0f0;
-      }
-
-      label, input {
-        /* in order to define widths */
-       /* display: inline-block;
-        font-size: 12pt;
-        font-family: Sans-serif;
-      }
-
-      label {
-        width: 30%;
-        
-        text-align: right;
-      }
-
-      label + input {
-        width: 50%;
-        background-color: red;
-        margin: 0 10% 0 4%;
-      }
-
-
-      input + input {
-        float: right;
-      }*/
-
-/* for the game */
-
-div.out {
-    width: 40%;
-    height: 120px;
-    margin: 0 15px;
-    background-color: #d6edfc;
-    float: left;
-  }
-  div.in {
-    width: 60%;
-    height: 60%;
-    background-color: #fc0;
-    margin: 10px auto;
-  }
-  p {
-    line-height: 1em;
-    margin: 0;
-    padding: 0;
-  }
-
